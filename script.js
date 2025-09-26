@@ -1,15 +1,13 @@
 // Theme toggle
-const btn = document.getElementById('themeToggle');
-const root = document.body;
-btn.addEventListener('click', () => {
-  const c = root.getAttribute('data-theme');
-  const n = c === 'light' ? 'dark' : 'light';
-  root.setAttribute('data-theme', n);
-  btn.textContent = n === 'dark' ? 'Light' : 'Dark';
+document.getElementById('themeToggle').addEventListener('click', () => {
+  const body = document.body;
+  const theme = body.getAttribute('data-theme');
+  body.setAttribute('data-theme', theme === 'light' ? 'dark' : 'light');
+  document.getElementById('themeToggle').textContent = theme === 'light' ? 'Light' : 'Dark';
 });
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// 3D Animation with Three.js
+// Three.js animation
 const canvas = document.getElementById('three-canvas');
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
@@ -35,14 +33,13 @@ function animate() {
 }
 animate();
 
-// Lightbox functionality
+// Lightbox
 document.querySelectorAll('.thumb').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
-    const img = link.querySelector('img');
-    lightboxImg.src = img.src;
+    lightboxImg.src = link.querySelector('img').src;
     lightbox.style.display = 'flex';
   });
 });
