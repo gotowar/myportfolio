@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio — Saad Moazzam</title>
+  <meta name="description" content="Portfolio showcasing coding projects and 3D design models." />
+  <style>
+    :root{--bg:#f6f7fb;--card:#ffffff;--text:#0f1724;--muted:#6b7280;--accent:#2563eb}
+    [data-theme="dark"]{--bg:#0b1020;--card:#071029;--text:#e6eef8;--muted:#9aa6bf;--accent:#60a5fa}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial; background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+    a{color:inherit}
+    .container{max-width:1100px;margin:0 auto;padding:28px}
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;animation:spin 6s linear infinite}
+    nav{display:flex;gap:14px;align-items:center}
+    nav a{padding:8px 12px;border-radius:8px;font-weight:600;color:var(--muted);text-decoration:none;transition:all .3s}
+    nav a:hover{color:var(--text);background:rgba(0,0,0,0.08);transform:translateY(-2px)}
+    .cta{background:var(--accent);color:white;padding:8px 12px;border-radius:8px}
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;padding:36px 0}
+    .hero h1{font-size:2.2rem;margin:0;animation:fadeUp 1s ease-out}
+    .hero p{color:var(--muted);line-height:1.5;animation:fadeUp 1.3s ease-out}
+    .links{display:flex;gap:10px;margin-top:16px}
+    .btn{padding:10px 14px;border-radius:10px;font-weight:600;border:1px solid rgba(0,0,0,0.06);background:var(--card);cursor:pointer;transition:all .3s}
+    .btn:hover{transform:scale(1.05);background:var(--accent);color:white}
+    .card{background:var(--card);border-radius:14px;padding:18px;box-shadow:0 6px 18px rgba(2,6,23,0.06);transition:transform .3s,box-shadow .3s}
+    .card:hover{transform:translateY(-4px);box-shadow:0 10px 22px rgba(2,6,23,0.1)}
+    .skills{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .chip{padding:8px 10px;border-radius:999px;border:1px solid rgba(0,0,0,0.06);font-weight:600;color:var(--muted);transition:all .3s}
+    .chip:hover{background:var(--accent);color:white}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;margin-top:18px}
+    .project-card{overflow:hidden;border-radius:12px;animation:fadeUp 1s ease-out}
+    .project-media{height:160px;background:linear-gradient(135deg,rgba(0,0,0,0.05),rgba(0,0,0,0.02));display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--muted);perspective:1000px}
+    .project-media div{width:60px;height:60px;background:var(--accent);animation:spin3d 6s infinite linear}
+    .project-body{padding:12px}
+    .project-title{margin:0;font-size:1.02rem}
+    .proj-meta{color:var(--muted);font-size:0.92rem;margin-top:6px}
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+    .thumb{aspect-ratio:1 / 1;border-radius:8px;overflow:hidden;display:block;transform:scale(1);transition:all .3s;cursor:pointer}
+    .thumb:hover{transform:scale(1.08)}
+    .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    form{display:grid;gap:10px}
+    input,textarea{padding:10px;border-radius:8px;border:1px solid rgba(2,6,23,0.06);background:transparent;color:var(--text)}
+    button[type=submit]{padding:10px 14px;border-radius:8px;background:var(--accent);color:white;border:0;cursor:pointer;transition:all .3s}
+    button[type=submit]:hover{transform:scale(1.05)}
+    footer{padding:24px 0;color:var(--muted);font-size:0.95rem;text-align:center}
+    @media (max-width:900px){.hero{grid-template-columns:1fr;gap:20px}.logo{width:42px;height:42px}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+    @keyframes spin3d{from{transform:rotateY(0deg) rotateX(0deg)}to{transform:rotateY(360deg) rotateX(360deg)}}
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r148/three.min.js"></script>
+</head>
+<body data-theme="light">
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">S</div>
+        <div>
+          <div style="font-weight:800">Saad Moazzam</div>
+          <div style="font-size:12px;color:var(--muted)">Coder • 3D Model Designer • Problem Solver</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#models">3D Models</a>
+        <a href="#contact">Contact</a>
+        <button id="themeToggle" class="btn" title="Toggle theme">Dark</button>
+      </nav>
+    </header>
+
+    <section class="hero" id="about">
+      <div>
+        <h1>Hi — I’m <span style="color:var(--accent)">Saad</span>.<br/>I build apps and 3D models.</h1>
+        <p>I’m a software developer and 3D artist specializing in full-stack apps, interactive visualizations, and 3D product models.</p>
+        <div class="card" style="margin-top:18px">
+          <strong>Skills</strong>
+          <div class="skills">
+            <div class="chip">JavaScript</div>
+            <div class="chip">Python</div>
+            <div class="chip">Blender</div>
+            <div class="chip">C++</div>
+            <div class="chip">Three.js</div>
+          </div>
+        </div>
+        <div class="links">
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="btn" href="#models">View 3D Models</a>
+          <a class="btn" href="mailto:mozmsaad@gmail.com">Email Me</a>
+        </div>
+      </div>
+      <aside class="card" style="text-align:center">
+        <div id="three-canvas" style="width:100%;height:220px;border-radius:10px"></div>
+        <div style="margin-top:12px;color:var(--muted)">Based in: Toronto, Ontario • Open to work</div>
+      </aside>
+    </section>
+
+    <section id="projects">
+      <h2>Selected Coding Projects</h2>
+      <div class="grid">
+        <article class="card project-card">
+          <div class="project-media"><div></div></div>
+          <div class="project-body">
+            <h3 class="project-title">Project One — Task Manager</h3>
+            <div class="proj-meta">React • Node.js • PostgreSQL</div>
+            <p style="color:var(--muted);margin-top:10px">A collaborative task manager with real-time updates.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="models" style="margin-top:28px">
+      <h2>3D Design Models</h2>
+      <div class="gallery-grid card" style="padding:12px;margin-top:12px">
+        <a href="#" class="thumb"><img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800" alt="Model 1"></a>
+        <a href="#" class="thumb"><img src="https://i.postimg.cc/C5jQjHmP/IMG-0492.jpg" alt="Model 2"></a>
+      </div>
+    </section>
+
+    <section id="contact" style="margin-top:28px">
+      <h2>Contact</h2>
+      <form id="contactForm">
+        <input id="name" placeholder="Your name" required>
+        <input id="email" placeholder="Your email" type="email" required>
+        <textarea id="message" rows="5" placeholder="Message"></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </section>
+
+    <footer>© <span id="year"></span> Saad Moazzam</footer>
+  </div>
+
+  <script>
+    const btn=document.getElementById('themeToggle');
+    const root=document.body;
+    btn.addEventListener('click',()=>{const c=root.getAttribute('data-theme');const n=c==='light'?'dark':'light';root.setAttribute('data-theme',n);btn.textContent=n==='dark'?'Light':'Dark'});
+    document.getElementById('year').textContent=new Date().getFullYear();
+
+    // 3D Animation with Three.js
+    const canvas=document.getElementById('three-canvas');
+    const scene=new THREE.Scene();
+    const camera=new THREE.PerspectiveCamera(45,canvas.clientWidth/canvas.clientHeight,0.1,1000);
+    const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+    renderer.setSize(canvas.clientWidth,canvas.clientHeight);
+    canvas.appendChild(renderer.domElement);
+    const geometry=new THREE.TorusKnotGeometry(1,0.3,100,16);
+    const material=new THREE.MeshStandardMaterial({color:0x2563eb,metalness:0.7,roughness:0.2});
+    const torusKnot=new THREE.Mesh(geometry,material);
+    scene.add(torusKnot);
+    const light=new THREE.PointLight(0xffffff,1);
+    light.position.set(5,5,5);
+    scene.add(light);
+    camera.position.z=5;
+    function animate(){requestAnimationFrame(animate);torusKnot.rotation.x+=0.01;torusKnot.rotation.y+=0.01;renderer.render(scene,camera)}
+    animate();
+  </script>
+</body>
+</html>
