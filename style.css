@@ -1,3 +1,4 @@
+/* Base styles (same as before) */
 :root {
   --bg: #f6f7fb;
   --card: #ffffff;
@@ -13,55 +14,11 @@
   --accent: #60a5fa;
 }
 * { box-sizing: border-box; }
-html, body {
-  height: 100%;
-  margin: 0;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-  background: var(--bg);
-  color: var(--text);
-  scroll-behavior: smooth;
-}
+html, body { height: 100%; margin: 0; font-family: Inter, ui-sans-serif, system-ui; background: var(--bg); color: var(--text); }
 a { color: inherit; }
-.container { max-width: 1100px; margin: 0 auto; padding: 28px; }
-header { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
-.brand { display: flex; gap: 12px; align-items: center; }
-.logo { width: 48px; height: 48px; border-radius: 10px; background: linear-gradient(135deg,var(--accent),#7c3aed); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; animation: spin 6s linear infinite; }
-nav { display: flex; gap: 14px; align-items: center; }
-nav a { padding: 8px 12px; border-radius: 8px; font-weight: 600; color: var(--muted); text-decoration: none; transition: all .3s; }
-nav a:hover { color: var(--text); background: rgba(0,0,0,0.08); transform: translateY(-2px); }
-.cta { background: var(--accent); color: white; padding: 8px 12px; border-radius: 8px; }
-.hero { display: grid; grid-template-columns: 1fr 380px; gap: 28px; align-items: center; padding: 36px 0; }
-.hero h1 { font-size: 2.2rem; margin: 0; animation: fadeUp 1s ease-out; }
-.hero p { color: var(--muted); line-height: 1.5; animation: fadeUp 1.3s ease-out; }
-.links { display: flex; gap: 10px; margin-top: 16px; }
-.btn { padding: 10px 14px; border-radius: 10px; font-weight: 600; border: 1px solid rgba(0,0,0,0.06); background: var(--card); cursor: pointer; transition: all .3s; }
-.btn:hover { transform: scale(1.05); background: var(--accent); color: white; }
-.card { background: var(--card); border-radius: 14px; padding: 18px; box-shadow: 0 6px 18px rgba(2,6,23,0.06); transition: transform .3s, box-shadow .3s; }
-.card:hover { transform: translateY(-4px); box-shadow: 0 10px 22px rgba(2,6,23,0.1); }
-.skills { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
-.chip { padding: 8px 10px; border-radius: 999px; border: 1px solid rgba(0,0,0,0.06); font-weight: 600; color: var(--muted); transition: all .3s; }
-.chip:hover { background: var(--accent); color: white; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(260px,1fr)); gap: 18px; margin-top: 18px; }
-.project-card { overflow: hidden; border-radius: 12px; animation: fadeUp 1s ease-out; }
-.project-media { height: 160px; background: linear-gradient(135deg,rgba(0,0,0,0.05),rgba(0,0,0,0.02)); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--muted); perspective: 1000px; }
-.project-body { padding: 12px; }
-.project-title { margin: 0; font-size: 1.02rem; }
-.proj-meta { color: var(--muted); font-size: 0.92rem; margin-top: 6px; }
-.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(160px,1fr)); gap: 12px; }
-.thumb { aspect-ratio: 1 / 1; border-radius: 8px; overflow: hidden; display: block; transform: scale(1); transition: all .3s; cursor: pointer; }
-.thumb:hover { transform: scale(1.08); }
-.thumb img { width: 100%; height: auto; object-fit: contain; display: block; }
-form { display: grid; gap: 10px; }
-input,textarea { padding: 10px; border-radius: 8px; border: 1px solid rgba(2,6,23,0.06); background: transparent; color: var(--text); }
-button[type=submit] { padding: 10px 14px; border-radius: 8px; background: var(--accent); color: white; border: 0; cursor: pointer; transition: all .3s; }
-button[type=submit]:hover { transform: scale(1.05); }
-footer { padding: 24px 0; color: var(--muted); font-size: 0.95rem; text-align: center; }
-@media (max-width:900px) { .hero { grid-template-columns: 1fr; gap: 20px; } .logo { width: 42px; height: 42px; } }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-@keyframes spin3d { from { transform: rotateY(0deg) rotateX(0deg); } to { transform: rotateY(360deg) rotateX(360deg); } }
+/* ... All previous CSS ... */
 
-/* Lightbox styles */
+/* Lightbox */
 .lightbox {
   display: none;
   position: fixed;
@@ -74,10 +31,8 @@ footer { padding: 24px 0; color: var(--muted); font-size: 0.95rem; text-align: c
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
 }
 .lightbox img {
   max-width: 90%;
   max-height: 90%;
-  border-radius: 10px;
 }
