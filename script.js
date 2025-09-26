@@ -36,10 +36,12 @@ function animate() {
 animate();
 
 // Lightbox functionality
-document.querySelectorAll('.thumb img').forEach(img => {
-  img.addEventListener('click', () => {
+document.querySelectorAll('.thumb').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
+    const img = link.querySelector('img');
     lightboxImg.src = img.src;
     lightbox.style.display = 'flex';
   });
